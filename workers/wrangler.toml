@@ -58,9 +58,14 @@ compatibility_flags = ["nodejs_compat"]
 
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces
-# [[kv_namespaces]]
-binding = "vite-cms"
-id = "bd8d7710a60540279f52971d55102e1f"
+[[kv_namespaces]]
+binding = "pages"
+id = "14c37b95c93947f6a4057ec1f47b337c"
+preview_id = "6f4be36660464860b8c423e96df8651e"
+[[kv_namespaces]]
+binding = "blog"
+id = "833ad1e034fe4155812ee17c9d9623c7"
+preview_id = "237cc789c03f41c4ae5ffbabb15d2d74"
 
 # Bind an mTLS certificate. Use to present a client certificate when communicating with another service.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#mtls-certificates

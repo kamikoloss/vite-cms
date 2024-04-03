@@ -1,63 +1,62 @@
 export interface Env {
 	pages: KVNamespace;
-	blog: KVNamespace;
 }
 
+// (key) と (value) 以外はすべて metadata
 export interface ReqBody {
-	id?: string,
+	id?: string, // <PREFIX>-<UUID?> (key)
 	title: string,
-	body: string,
+	type: number,
+	draft: number,
+	created: number, // Unixtime
+	updated: number, // Unixtime
+	body: string, // 本文 (value)
 }
 
-// GET|POST|PUT|DELETE /pages
-// GET|POST|PUT|DELETE /blog
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		const { url, method } = request;
 		const reqBody: ReqBody = await request.json();
+		const { id, title, type, draft, created, updated, body } = reqBody;
+		const kv: KVNamespace = env.pages;
 
-		// POST 限定
+		// POST 以外の場合: エラー
 		if (method !== 'POST') {
 			return Response.json({ error: 'invalid method.' })
 		}
 
-		// ルートから KV (pages or blog) を判定する
-		let kv: KVNamespace = env.pages;
-		if (url.includes('/pages')) {
-			kv = env.pages;
-		} else if (url.includes('/blog')) {
-			kv = env.blog;
-		} else {
-			return Response.json({ error: 'invalid route.' })
-		}
-
 		// ルートから処理を判定する
 		if (url.includes('/list')) {
-			// キーの一覧を取得する
+			// アイテム一覧を取得する
 			const data = await kv.list();
 			return Response.json({ data });
 		} else if (url.includes('/get')) {
-			// 取得する
-			if (!reqBody.id) return Response.json({ error: 'id is required.' });
-			const data = await kv.get(reqBody.id);
-			if (!data) return Response.json({ error: 'not found.' });
-			return Response.json({ data: JSON.parse(data) });
+			// アイテムを取得する
+			if (!id) return Response.json({ error: 'id is required.' });
+			const data = await kv.getWithMetadata(id);
+			return Response.json({
+				body: JSON.parse(data.value ?? ''),
+				metadata: data.metadata,
+			});
 		} else if (url.includes('/put')) {
-			// 作成する
-			const id = crypto.randomUUID();
-			await kv.put(id, JSON.stringify({ ...reqBody }));
+			// アイテムを作成する
+			const key = crypto.randomUUID();
+			const metadata = { title, type, draft, created, updated };
+			await kv.put(key, JSON.stringify(body), { metadata });
 		} else if (url.includes('/update')) {
-			// 更新する
-			if (!reqBody.id) return Response.json({ error: 'id is required.' });
-			await kv.put(reqBody.id, JSON.stringify({ ...reqBody }));
+			// アイテムを更新する
+			if (!id) return Response.json({ error: 'id is required.' });
+			const metadata = { title, type, draft, created, updated };
+			await kv.put(id, JSON.stringify({ ...reqBody }), { metadata });
 		} else if (url.includes('/delete')) {
-			// 削除する
-			if (!reqBody.id) return Response.json({ error: 'id is required.' });
-			await kv.delete(reqBody.id);
+			// アイテムを削除する
+			if (!id) return Response.json({ error: 'id is required.' });
+			await kv.delete(id);
 		} else {
-			return Response.json({ error: 'invalid route.' })
+			// それ以外のルート: エラー
+			return Response.json({ error: 'invalid route.' });
 		}
 
-		return Response.json({ message: 'Success!'});
+		return Response.json({ message: 'success!'});
 	},
 };

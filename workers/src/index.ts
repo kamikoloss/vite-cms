@@ -49,11 +49,11 @@ export default {
 			// アイテムを作成する
 			const key = crypto.randomUUID();
 			const metadata = { title, type, draft, created, updated };
-			await kv.put(key, JSON.stringify(body), { metadata });
+			await kv.put(key, body, { metadata });
 		} else if (url.includes('/update')) {
 			// アイテムを更新する
 			const metadata = { title, type, draft, created, updated };
-			await kv.put(id!, JSON.stringify({ ...reqBody }), { metadata });
+			await kv.put(id!, body, { metadata });
 		} else if (url.includes('/delete')) {
 			// アイテムを削除する
 			await kv.delete(id!);

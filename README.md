@@ -1,1 +1,1 @@
-# VitePress CMS
+# Vite CMS

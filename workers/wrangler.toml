@@ -1,4 +1,4 @@
-name = "vitepress-cms"
+name = "vite-cms"
 main = "src/index.ts"
 compatibility_date = "2024-03-29"
 compatibility_flags = ["nodejs_compat"]
@@ -59,7 +59,7 @@ compatibility_flags = ["nodejs_compat"]
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces
 # [[kv_namespaces]]
-binding = "vitepress-cms"
+binding = "vite-cms"
 id = "bd8d7710a60540279f52971d55102e1f"
 
 # Bind an mTLS certificate. Use to present a client certificate when communicating with another service.

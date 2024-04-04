@@ -1,0 +1,8 @@
+name = "vite-cms"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-04-04"
+
+[[kv_namespaces]]
+binding = "pages"
+id = "430321d1d7a4461db899f89df59d926f"
+preview_id = "391042132f3249e3a3dff46db520f422"

@@ -1,9 +1,10 @@
 export interface Env {
-	pages: KVNamespace;
+	KV: KVNamespace;
+  R2: R2Bucket;
 }
 
 // (value) 以外はすべて metadata
-export type ReqBody = {
+export type PageReqBody = {
 	title: string,
 	type: number,
 	draft: number,

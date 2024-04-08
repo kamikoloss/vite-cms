@@ -3,9 +3,9 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-04-04"
 
 [[kv_namespaces]]
-binding = "pages"
+binding = "KV"
 id = "430321d1d7a4461db899f89df59d926f"
 
 [[r2_buckets]]
-binding = "files"
+binding = "R2"
 bucket_name = "vite-cms"

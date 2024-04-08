@@ -1,22 +1,22 @@
-import { Env, ReqBody } from '../../interfaces';
+import { Env, PageReqBody } from '../../interfaces';
 
 // GET /api/pages/[id]
 // アイテムを取得する
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const id = <string>context.params.id;
-  const item = await context.env.pages.getWithMetadata(id);
+  const item = await context.env.KV.getWithMetadata(id);
   return Response.json({ body: item.value, metadata: item.metadata });  
 }
 
 // PUT /api/pages/[id]
 // アイテムを更新する
 export const onRequestPut: PagesFunction<Env> = async (context) => {
-  const reqBody: ReqBody = await context.request.json();
+  const reqBody: PageReqBody = await context.request.json();
   const { title, type, draft, created, updated, body } = reqBody;
 
   const id = <string>context.params.id;
   const metadata = { title, type, draft, created, updated };
-  await context.env.pages.put(id, body, { metadata });
+  await context.env.KV.put(id, body, { metadata });
   return Response.json({ message: 'success!'});
 }
 
@@ -24,6 +24,6 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
 // アイテムを削除する
 export const onRequestDelete: PagesFunction<Env> = async (context) => {
   const id = <string>context.params.id;
-  await context.env.pages.delete(id);
+  await context.env.KV.delete(id);
   return Response.json({ message: 'success!'});
 }

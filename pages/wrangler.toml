@@ -1,6 +1,6 @@
 name = "vite-cms"
 pages_build_output_dir = "./dist"
-compatibility_date = "2024-04-04"
+compatibility_date = "2024-04-03"
 
 [[kv_namespaces]]
 binding = "KV"

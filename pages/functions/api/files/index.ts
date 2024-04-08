@@ -10,7 +10,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 // POST /api/files
 // ファイルをアップロードする
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const key = crypto.randomUUID();
+  const uuid = crypto.randomUUID();
+  const contentType = context.request.headers.get('content-type');
+  const ext = contentType.split('/').pop().split('+').shift();
+  const key = `${uuid}.${ext}`;
   await context.env.R2.put(key, context.request.body);
-  return Response.json({ id: key });
+  return Response.json({ key });
 }

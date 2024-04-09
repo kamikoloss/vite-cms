@@ -2,6 +2,10 @@ name = "vite-cms"
 pages_build_output_dir = "./dist"
 compatibility_date = "2024-04-03"
 
+[vars]
+ACCESS_DOMAIN = "https://gloxinia.cloudflareaccess.com"
+ACCESS_AUD = "2547f8ec5885935a61bbefb02fdd273d0366cde62a2da15fa28ace0c41127850"
+
 [[kv_namespaces]]
 binding = "KV"
 id = "430321d1d7a4461db899f89df59d926f"

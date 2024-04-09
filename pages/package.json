@@ -12,6 +12,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@cloudflare/pages-plugin-cloudflare-access": "^1.0.4",
     "vue": "^3.4.21"
   },
   "devDependencies": {

@@ -3,13 +3,13 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Vue
 import App from './App.vue';
 import Top from './views/Top.vue';
-import About from './views/About.vue';
 // CSS
 import './style.css';
 
+// Router
 const routes = [
   { path: '/', component: Top },
-  { path: '/about', component: About },
+  { path: '/admin', component: () => import('./views/Admin.vue') },
 ];
 const router = createRouter({
   history: createWebHistory(),

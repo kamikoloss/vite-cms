@@ -2,7 +2,18 @@
 </script>
 
 <template>
-  <h1>Vite CMS</h1>
+  <div>
+    <header>
+      <h1>Vite CMS</h1>
+      <nav>
+        <RouterLink to="/">Top</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </header>
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style scoped>

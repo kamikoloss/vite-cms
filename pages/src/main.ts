@@ -9,7 +9,7 @@ import './style.css';
 // Router
 const routes = [
   { path: '/', component: Top },
-  { path: '/admin', component: () => import('./views/Admin.vue') },
+  { path: '/admin/top', component: () => import('./views/Admin.vue') },
 ];
 const router = createRouter({
   history: createWebHistory(),

@@ -1,6 +1,7 @@
 import cloudflareAccessPlugin from '@cloudflare/pages-plugin-cloudflare-access';
-import { Env } from './interfaces';
+import { Env } from '../interfaces';
 
+// "/api/*" に対する middleware
 export const onRequest: PagesFunction<Env>[] = [
   // Cloudflare Access の JWT を検証する
   // ref. https://developers.cloudflare.com/pages/functions/plugins/cloudflare-access/

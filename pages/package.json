@@ -12,12 +12,11 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@cloudflare/pages-plugin-cloudflare-access": "^1.0.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240403.0",
+    "@cloudflare/workers-types": "^4.20240405.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.3",
     "vite": "^5.2.0",

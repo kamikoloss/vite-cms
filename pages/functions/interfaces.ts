@@ -2,8 +2,6 @@ export interface Env {
 	KV: KVNamespace;
   R2: R2Bucket;
   APP_MODE: 'production' | 'develop';
-  ACCESS_DOMAIN: `https://${string}.cloudflareaccess.com`;
-  ACCESS_AUD: string;
 }
 
 // (value) 以外はすべて metadata

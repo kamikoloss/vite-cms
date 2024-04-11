@@ -3,10 +3,8 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-04-03"
 
 [vars]
-APP_MODE = "production"
-#APP_MODE = "develop"
-ACCESS_DOMAIN = "https://gloxinia.cloudflareaccess.com"
-ACCESS_AUD = "2547f8ec5885935a61bbefb02fdd273d0366cde62a2da15fa28ace0c41127850"
+#APP_MODE = "production"
+APP_MODE = "develop"
 
 [[kv_namespaces]]
 binding = "KV"

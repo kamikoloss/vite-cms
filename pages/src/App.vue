@@ -7,7 +7,7 @@
       <h1>Vite CMS</h1>
       <nav>
         <RouterLink to="/">Top</RouterLink>
-        <RouterLink to="/admin">Admin</RouterLink>
+        <RouterLink to="/admin/top">Admin</RouterLink>
       </nav>
     </header>
     <main>

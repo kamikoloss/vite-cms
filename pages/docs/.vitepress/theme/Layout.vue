@@ -1,21 +1,15 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-
-// https://vitepress.dev/reference/runtime-api#usedata
-const { site, frontmatter } = useData()
+//import { useData } from 'vitepress'
 </script>
 
 <template>
-  <div v-if="frontmatter.home">
-    <h1>{{ site.title }}</h1>
-    <p>{{ site.description }}</p>
-    <ul>
+  <div>
+    <header>
+      <li><a href="/">Top</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="/markdown-examples.html">Markdown Examples</a></li>
       <li><a href="/api-examples.html">API Examples</a></li>
-    </ul>
-  </div>
-  <div v-else>
-    <a href="/">Home</a>
+    </header>
     <Content />
   </div>
 </template>

@@ -1,5 +1,5 @@
-<template>
-  <div>
-    <h1>Blog</h1>
-  </div>
-</template>
+<script setup>
+import { data } from './blog.data';
+</script>
+
+<pre>{{ data }}</pre>

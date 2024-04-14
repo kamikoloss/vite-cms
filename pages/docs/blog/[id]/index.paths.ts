@@ -1,15 +1,15 @@
-import { data } from "./blog.data";
+import data from '../blog.data';
 
-// 動的ルートページの事前ビルドを行う
+// ビルド時に動的ルートを決定する
 // ref. https://vitepress.dev/guide/routing#dynamic-routes
-// ref. https://vitepress.dev/guide/cms
 export default {
   async paths() {
-    return data.data.map(entry => {
+    const entries = await data.load();
+    return entries.map(entry => {
       return {
         params: { id: entry.id, ...entry.metadata },
         content: entry.body,
       };
-    })
+    });
   }
 }

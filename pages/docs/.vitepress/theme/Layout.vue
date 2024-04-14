@@ -5,8 +5,11 @@
 <template>
   <div>
     <header>
-      <li><a href="/">Top</a></li>
-      <li><a href="/blog/">Blog</a></li>
+      <h1>Vite CMS (VitePress)</h1>
+      <ul>
+        <li><a href="/">Top</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
     </header>
     <Content />
   </div>
